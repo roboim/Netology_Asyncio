@@ -6,7 +6,7 @@ from sqlalchemy import JSON
 
 POSTGRES_PASSWORD = os.getenv("POSTGRES_PASSWORD", "admin")
 POSTGRES_USER = os.getenv("POSTGRES_USER", "admin")
-POSTGRES_DB = os.getenv("POSTGRES_DB", "swapi")
+POSTGRES_DB = os.getenv("POSTGRES_DB", "swapi_ilya")
 POSTGRES_HOST = os.getenv("POSTGRES_HOST", "localhost")
 POSTGRES_PORT = os.getenv("POSTGRES_PORT", "5431")
 
@@ -30,6 +30,6 @@ class SwapiPeople(Base):
 
 async def init_db():
     async with engine.begin() as conn:
-        await conn.run_sync(Base.metadata.drop_all)
+        # await conn.run_sync(Base.metadata.drop_all)
         await conn.run_sync(Base.metadata.create_all)
 
